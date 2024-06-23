@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
     imports: [RegisterComponent]
 })
 export class HomeComponent implements OnInit{
-
+  // to be able to use http requests
   http = inject(HttpClient);
   registerMode = false;
   users: any;
@@ -23,10 +23,13 @@ export class HomeComponent implements OnInit{
     this.registerMode = !this.registerMode
   }
 
+  // returns to home page from register page.
+  // 'event' value comes from (child) register comp. to (parent) home comp.
   cancelRegisterMode(event: boolean){
     this.registerMode = event;
   }
 
+  // lists all the users from db
   getUsers(){
     this.http.get('https://localhost:5001/api/users').subscribe({
       next: response => this.users = response,

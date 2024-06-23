@@ -12,8 +12,11 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-4">
+                        <!-- To send input from home component to its child components add this
+                        [nameOfVariableInTheChild] = "nameOfVariableInTheParent" 
+                        into app-register tag -->
                         <app-register 
-                            (cancelRegister)="cancelRegisterMode($event)"></app-register>
+                            (cancelRegister)="cancelRegisterMode($event)"></app-register> <!-- receive input from child component -->
                     </div>
                 </div>
             </div>

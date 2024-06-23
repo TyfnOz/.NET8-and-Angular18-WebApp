@@ -10,11 +10,19 @@ import { AccountService } from '../_services/account.service';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  // to be able to use AccountController and to register
   private accountService = inject(AccountService);
-  // @Input() usersFromHomeComponent: any;
-  // @Output cancelRegister = new EventEmitter();
+
+  // @Input() usersFromHomeComponent: any;          
   // usersFromHomeComponent = input.required<any>();
+  // above 2 comment lines are 2 different ways to getting input from parent comp. 
+  // (from home comp. in this case)
+  
+  // @Output cancelRegister = new EventEmitter();
   cancelRegister = output<boolean>();
+  // above 2 lines are 2 different ways to sending input to parent comp. 
+  // from (child) register comp. to (parent) home comp.
+
   model: any = {};
 
   register(){

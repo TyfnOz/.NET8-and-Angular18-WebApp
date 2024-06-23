@@ -7,10 +7,13 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 
+// Service communicates with AccountController apicontroller from api. 
 export class AccountService {
   private http = inject(HttpClient);
   baseUrl = "https://localhost:5001/api/";
-  currentUser = signal<User | null>(null)
+  currentUser = signal<User | null>(null); 
+  // Signals and its usage with Observables is like Observer design pattern (obviously).
+  // Signals are the way of communication between Observables i guess.
 
   login(model: any){
     return this.http.post<User>(this.baseUrl + "account/login", model).pipe(

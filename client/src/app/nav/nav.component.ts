@@ -11,9 +11,11 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   styleUrl: './nav.component.css'
 })
 export class NavComponent {
+  // to be able to use AccountController apicontroller class -> /api/account/*
   accountService = inject(AccountService);
   model: any = {};
 
+  // login section on navbar
   login(){
     this.accountService.login(this.model).subscribe({
       next: response => {
@@ -22,7 +24,7 @@ export class NavComponent {
       error: error => console.log(error)
     });
   }
-
+  
   logout(){
     this.accountService.logout();
   }
