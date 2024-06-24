@@ -1,6 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -18,6 +19,8 @@ export class RegisterComponent {
   // above 2 comment lines are 2 different ways to getting input from parent comp. 
   // (from home comp. in this case)
   
+  private toastr = inject(ToastrService);
+
   // @Output cancelRegister = new EventEmitter();
   cancelRegister = output<boolean>();
   // above 2 lines are 2 different ways to sending input to parent comp. 
@@ -31,7 +34,7 @@ export class RegisterComponent {
         console.log(response);
         this.cancel();
       },
-      error: error => console.log(error)
+      error: error => this.toastr.error(error.error)
     });
   }
 
