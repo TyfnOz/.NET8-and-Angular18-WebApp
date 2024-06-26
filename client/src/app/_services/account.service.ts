@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { User } from '../_models/user';
 import { map } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { map } from 'rxjs';
 // Service communicates with AccountController apicontroller from api. 
 export class AccountService {
   private http = inject(HttpClient);
-  baseUrl = "https://localhost:5001/api/";
+  baseUrl = environment.apiUrl;
   currentUser = signal<User | null>(null); 
   // Signals and its usage with Observables is like Observer design pattern (obviously).
   // Signals are the way of communication between Observables i guess.
