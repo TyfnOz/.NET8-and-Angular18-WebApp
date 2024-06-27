@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { Member } from '../../_models/member';
-import {RouterLink } from '@angular/router';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
