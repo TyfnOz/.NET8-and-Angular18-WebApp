@@ -13,7 +13,6 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     imports: [RouterOutlet, NavComponent, HomeComponent, NgxSpinnerComponent]
 })
 export class AppComponent implements OnInit{
-  // to be able to use account controller of api -> /api/account/*
   private accountService = inject(AccountService);
 
   // when user connects to website again,
@@ -29,6 +28,6 @@ export class AppComponent implements OnInit{
     const userString = localStorage.getItem('user');
     if(!userString) return;
     const user = JSON.parse(userString);
-    this.accountService.currentUser.set(user);
+    this.accountService.setCurrentUser(user);
   }
 }
