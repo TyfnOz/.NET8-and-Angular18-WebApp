@@ -16,17 +16,14 @@
           <li class="nav-item">
             <a routerLink="/messages" routerLinkActive="active" class="nav-link" >Messages</a>
           </li>
+          <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
+            <a routerLink="/admin" routerLinkActive="active" class="nav-link" >Admin</a>
+          </li>
         }
         <li class="nav-item">
           <a routerLink="/errors" routerLinkActive="active" class="nav-link" >Errors</a>
         </li>
       </ul>
-      <!-- ng container doesnt output its html content to browser
-
-        <ng-container *ngIf="accountService.currentUser()">
-          
-        </ng-container>
-      -->
 
       @if (accountService.currentUser()) {
         <div dropdown class="dropdown">
