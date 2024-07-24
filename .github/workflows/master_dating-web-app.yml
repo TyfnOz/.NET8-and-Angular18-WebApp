@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       - name: Set up node.js
         uses: actions/setup-node@v3
@@ -31,7 +31,7 @@ jobs:
           ng build
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '8.x'
           
@@ -45,7 +45,7 @@ jobs:
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
@@ -67,7 +67,7 @@ jobs:
           path: ${{env.DOTNET_ROOT}}/myapp
       
       - name: Login to Azure
-        uses: azure/login@v3
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_711670A4554B49A9ABB032D2C7405701 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_9FCD7932517C4E3384B2B917EC29A39C }}
@@ -75,7 +75,7 @@ jobs:
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
+        uses: azure/webapps-deploy@v2
         with:
           app-name: 'dating-web-app'
           slot-name: 'Production'
